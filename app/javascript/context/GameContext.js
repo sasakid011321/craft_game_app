@@ -1,0 +1,15 @@
+import React, { createContext, useContext } from "react";
+
+const GameContext = createContext(null);
+
+export function GameProvider({ value, children }) {
+  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
+}
+
+export function useGame() {
+  const context = useContext(GameContext);
+  if (!context) {
+    throw new Error("useGame must be used within a GameProvider");
+  }
+  return context;
+}
