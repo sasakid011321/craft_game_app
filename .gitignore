@@ -31,5 +31,10 @@
 
 /public/assets
 
+# Build output (generated files)
+/dist/application.js
+/dist/application.js.map
+/dist/game.css
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key

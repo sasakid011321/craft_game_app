@@ -7,7 +7,7 @@
     "react-dom": "^18.2.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/application.js --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx",
+    "build": "esbuild app/javascript/application.js --bundle --sourcemap --outdir=dist --loader:.js=jsx --loader:.jsx=jsx",
     "build:css": "echo 'No CSS build configured'"
   }
 }
