@@ -6,10 +6,14 @@ default: &default
 development:
   <<: *default
   database: craft_game_app_development
+  username: postgres
+  password: "11321"
 
 test:
   <<: *default
   database: craft_game_app_test
+  username: postgres
+  password: "11321"
 
 production:
   <<: *default

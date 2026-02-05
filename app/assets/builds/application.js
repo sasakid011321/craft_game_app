@@ -784,7 +784,7 @@
             }
             return children;
           }
-          function createContext(defaultValue) {
+          function createContext2(defaultValue) {
             var context = {
               $$typeof: REACT_CONTEXT_TYPE,
               // As a workaround to support multiple concurrent renderers, we categorize
@@ -1070,7 +1070,7 @@
             }
             return dispatcher;
           }
-          function useContext(Context) {
+          function useContext2(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1084,19 +1084,19 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState(initialState) {
+          function useState3(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
-          function useReducer(reducer, initialArg, init) {
+          function useReducer2(reducer, initialArg, init) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef(initialValue) {
+          function useRef2(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect(create, deps) {
+          function useEffect2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1108,7 +1108,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback(callback, deps) {
+          function useCallback2(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
@@ -1865,7 +1865,7 @@
           exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
           exports.act = act;
           exports.cloneElement = cloneElement$1;
-          exports.createContext = createContext;
+          exports.createContext = createContext2;
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
           exports.createRef = createRef;
@@ -1875,19 +1875,19 @@
           exports.memo = memo;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
-          exports.useCallback = useCallback;
-          exports.useContext = useContext;
+          exports.useCallback = useCallback2;
+          exports.useContext = useContext2;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect;
+          exports.useEffect = useEffect2;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
           exports.useLayoutEffect = useLayoutEffect;
           exports.useMemo = useMemo;
-          exports.useReducer = useReducer;
-          exports.useRef = useRef;
-          exports.useState = useState;
+          exports.useReducer = useReducer2;
+          exports.useRef = useRef2;
+          exports.useState = useState3;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2383,9 +2383,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React3 = require_react();
+          var React12 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React3.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React12.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3990,7 +3990,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React3.Children.forEach(props.children, function(child) {
+                  React12.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -7346,25 +7346,25 @@
             }
             return listenerWrapper.bind(null, domEventName, eventSystemFlags, targetContainer);
           }
-          function dispatchDiscreteEvent(domEventName, eventSystemFlags, container, nativeEvent) {
+          function dispatchDiscreteEvent(domEventName, eventSystemFlags, container2, nativeEvent) {
             var previousPriority = getCurrentUpdatePriority();
             var prevTransition = ReactCurrentBatchConfig.transition;
             ReactCurrentBatchConfig.transition = null;
             try {
               setCurrentUpdatePriority(DiscreteEventPriority);
-              dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
+              dispatchEvent(domEventName, eventSystemFlags, container2, nativeEvent);
             } finally {
               setCurrentUpdatePriority(previousPriority);
               ReactCurrentBatchConfig.transition = prevTransition;
             }
           }
-          function dispatchContinuousEvent(domEventName, eventSystemFlags, container, nativeEvent) {
+          function dispatchContinuousEvent(domEventName, eventSystemFlags, container2, nativeEvent) {
             var previousPriority = getCurrentUpdatePriority();
             var prevTransition = ReactCurrentBatchConfig.transition;
             ReactCurrentBatchConfig.transition = null;
             try {
               setCurrentUpdatePriority(ContinuousEventPriority);
-              dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
+              dispatchEvent(domEventName, eventSystemFlags, container2, nativeEvent);
             } finally {
               setCurrentUpdatePriority(previousPriority);
               ReactCurrentBatchConfig.transition = prevTransition;
@@ -9045,8 +9045,8 @@
                     }
                     var nodeTag = node.tag;
                     if (nodeTag === HostRoot || nodeTag === HostPortal) {
-                      var container = node.stateNode.containerInfo;
-                      if (isMatchingRootContainer(container, targetContainerNode)) {
+                      var container2 = node.stateNode.containerInfo;
+                      if (isMatchingRootContainer(container2, targetContainerNode)) {
                         break;
                       }
                       if (nodeTag === HostPortal) {
@@ -9062,8 +9062,8 @@
                           grandNode = grandNode.return;
                         }
                       }
-                      while (container !== null) {
-                        var parentNode = getClosestInstanceFromNode(container);
+                      while (container2 !== null) {
+                        var parentNode = getClosestInstanceFromNode(container2);
                         if (parentNode === null) {
                           return;
                         }
@@ -9072,7 +9072,7 @@
                           node = ancestorInst = parentNode;
                           continue mainLoop;
                         }
-                        container = container.parentNode;
+                        container2 = container2.parentNode;
                       }
                     }
                     node = node.return;
@@ -10195,9 +10195,9 @@
                 break;
               }
               default: {
-                var container = nodeType === COMMENT_NODE ? rootContainerInstance.parentNode : rootContainerInstance;
-                var ownNamespace = container.namespaceURI || null;
-                type = container.tagName;
+                var container2 = nodeType === COMMENT_NODE ? rootContainerInstance.parentNode : rootContainerInstance;
+                var ownNamespace = container2.namespaceURI || null;
+                type = container2.tagName;
                 namespace = getChildNamespace(ownNamespace, type);
                 break;
               }
@@ -10345,16 +10345,16 @@
           function appendChild(parentInstance, child) {
             parentInstance.appendChild(child);
           }
-          function appendChildToContainer(container, child) {
+          function appendChildToContainer(container2, child) {
             var parentNode;
-            if (container.nodeType === COMMENT_NODE) {
-              parentNode = container.parentNode;
-              parentNode.insertBefore(child, container);
+            if (container2.nodeType === COMMENT_NODE) {
+              parentNode = container2.parentNode;
+              parentNode.insertBefore(child, container2);
             } else {
-              parentNode = container;
+              parentNode = container2;
               parentNode.appendChild(child);
             }
-            var reactRootContainer = container._reactRootContainer;
+            var reactRootContainer = container2._reactRootContainer;
             if ((reactRootContainer === null || reactRootContainer === void 0) && parentNode.onclick === null) {
               trapClickOnNonInteractiveElement(parentNode);
             }
@@ -10362,21 +10362,21 @@
           function insertBefore(parentInstance, child, beforeChild) {
             parentInstance.insertBefore(child, beforeChild);
           }
-          function insertInContainerBefore(container, child, beforeChild) {
-            if (container.nodeType === COMMENT_NODE) {
-              container.parentNode.insertBefore(child, beforeChild);
+          function insertInContainerBefore(container2, child, beforeChild) {
+            if (container2.nodeType === COMMENT_NODE) {
+              container2.parentNode.insertBefore(child, beforeChild);
             } else {
-              container.insertBefore(child, beforeChild);
+              container2.insertBefore(child, beforeChild);
             }
           }
           function removeChild(parentInstance, child) {
             parentInstance.removeChild(child);
           }
-          function removeChildFromContainer(container, child) {
-            if (container.nodeType === COMMENT_NODE) {
-              container.parentNode.removeChild(child);
+          function removeChildFromContainer(container2, child) {
+            if (container2.nodeType === COMMENT_NODE) {
+              container2.parentNode.removeChild(child);
             } else {
-              container.removeChild(child);
+              container2.removeChild(child);
             }
           }
           function clearSuspenseBoundary(parentInstance, suspenseInstance) {
@@ -10403,13 +10403,13 @@
             } while (node);
             retryIfBlockedOn(suspenseInstance);
           }
-          function clearSuspenseBoundaryFromContainer(container, suspenseInstance) {
-            if (container.nodeType === COMMENT_NODE) {
-              clearSuspenseBoundary(container.parentNode, suspenseInstance);
-            } else if (container.nodeType === ELEMENT_NODE) {
-              clearSuspenseBoundary(container, suspenseInstance);
+          function clearSuspenseBoundaryFromContainer(container2, suspenseInstance) {
+            if (container2.nodeType === COMMENT_NODE) {
+              clearSuspenseBoundary(container2.parentNode, suspenseInstance);
+            } else if (container2.nodeType === ELEMENT_NODE) {
+              clearSuspenseBoundary(container2, suspenseInstance);
             }
-            retryIfBlockedOn(container);
+            retryIfBlockedOn(container2);
           }
           function hideInstance(instance) {
             instance = instance;
@@ -10432,12 +10432,12 @@
           function unhideTextInstance(textInstance, text) {
             textInstance.nodeValue = text;
           }
-          function clearContainer(container) {
-            if (container.nodeType === ELEMENT_NODE) {
-              container.textContent = "";
-            } else if (container.nodeType === DOCUMENT_NODE) {
-              if (container.documentElement) {
-                container.removeChild(container.documentElement);
+          function clearContainer(container2) {
+            if (container2.nodeType === ELEMENT_NODE) {
+              container2.textContent = "";
+            } else if (container2.nodeType === DOCUMENT_NODE) {
+              if (container2.documentElement) {
+                container2.removeChild(container2.documentElement);
               }
             }
           }
@@ -10575,8 +10575,8 @@
             }
             return null;
           }
-          function commitHydratedContainer(container) {
-            retryIfBlockedOn(container);
+          function commitHydratedContainer(container2) {
+            retryIfBlockedOn(container2);
           }
           function commitHydratedSuspenseInstance(suspenseInstance) {
             retryIfBlockedOn(suspenseInstance);
@@ -22671,21 +22671,21 @@
             scheduleInitialHydrationOnRoot(root2, lane, eventTime);
             return root2;
           }
-          function updateContainer(element, container, parentComponent, callback) {
+          function updateContainer(element, container2, parentComponent, callback) {
             {
-              onScheduleRoot(container, element);
+              onScheduleRoot(container2, element);
             }
-            var current$1 = container.current;
+            var current$1 = container2.current;
             var eventTime = requestEventTime();
             var lane = requestUpdateLane(current$1);
             {
               markRenderScheduled(lane);
             }
             var context = getContextForSubtree(parentComponent);
-            if (container.context === null) {
-              container.context = context;
+            if (container2.context === null) {
+              container2.context = context;
             } else {
-              container.pendingContext = context;
+              container2.pendingContext = context;
             }
             {
               if (isRendering && current !== null && !didWarnAboutNestedUpdates) {
@@ -22713,8 +22713,8 @@
             }
             return lane;
           }
-          function getPublicRootInstance(container) {
-            var containerFiber = container.current;
+          function getPublicRootInstance(container2) {
+            var containerFiber = container2.current;
             if (!containerFiber.child) {
               return null;
             }
@@ -23038,11 +23038,11 @@
               } else if (typeof arguments[1] !== "undefined") {
                 error("You passed a second argument to root.render(...) but it only accepts one argument.");
               }
-              var container = root2.containerInfo;
-              if (container.nodeType !== COMMENT_NODE) {
+              var container2 = root2.containerInfo;
+              if (container2.nodeType !== COMMENT_NODE) {
                 var hostInstance = findHostInstanceWithNoPortals(root2.current);
                 if (hostInstance) {
-                  if (hostInstance.parentNode !== container) {
+                  if (hostInstance.parentNode !== container2) {
                     error("render(...): It looks like the React-rendered content of the root container was removed without using React. This is not supported and will cause errors. Instead, call root.unmount() to empty a root's container.");
                   }
                 }
@@ -23059,7 +23059,7 @@
             var root2 = this._internalRoot;
             if (root2 !== null) {
               this._internalRoot = null;
-              var container = root2.containerInfo;
+              var container2 = root2.containerInfo;
               {
                 if (isAlreadyRendering()) {
                   error("Attempted to synchronously unmount a root while React was already rendering. React cannot finish unmounting the root until the current render has completed, which may lead to a race condition.");
@@ -23068,14 +23068,14 @@
               flushSync(function() {
                 updateContainer(null, root2, null, null);
               });
-              unmarkContainerAsRoot(container);
+              unmarkContainerAsRoot(container2);
             }
           };
-          function createRoot2(container, options2) {
-            if (!isValidContainer(container)) {
+          function createRoot2(container2, options2) {
+            if (!isValidContainer(container2)) {
               throw new Error("createRoot(...): Target container is not a DOM element.");
             }
-            warnIfReactDOMContainerInDEV(container);
+            warnIfReactDOMContainerInDEV(container2);
             var isStrictMode = false;
             var concurrentUpdatesByDefaultOverride = false;
             var identifierPrefix = "";
@@ -23104,9 +23104,9 @@
                 transitionCallbacks = options2.transitionCallbacks;
               }
             }
-            var root2 = createContainer(container, ConcurrentRoot, null, isStrictMode, concurrentUpdatesByDefaultOverride, identifierPrefix, onRecoverableError);
-            markContainerAsRoot(root2.current, container);
-            var rootContainerElement = container.nodeType === COMMENT_NODE ? container.parentNode : container;
+            var root2 = createContainer(container2, ConcurrentRoot, null, isStrictMode, concurrentUpdatesByDefaultOverride, identifierPrefix, onRecoverableError);
+            markContainerAsRoot(root2.current, container2);
+            var rootContainerElement = container2.nodeType === COMMENT_NODE ? container2.parentNode : container2;
             listenToAllSupportedEvents(rootContainerElement);
             return new ReactDOMRoot(root2);
           }
@@ -23119,11 +23119,11 @@
             }
           }
           ReactDOMHydrationRoot.prototype.unstable_scheduleHydration = scheduleHydration;
-          function hydrateRoot(container, initialChildren, options2) {
-            if (!isValidContainer(container)) {
+          function hydrateRoot(container2, initialChildren, options2) {
+            if (!isValidContainer(container2)) {
               throw new Error("hydrateRoot(...): Target container is not a DOM element.");
             }
-            warnIfReactDOMContainerInDEV(container);
+            warnIfReactDOMContainerInDEV(container2);
             {
               if (initialChildren === void 0) {
                 error("Must provide initial children as second argument to hydrateRoot. Example usage: hydrateRoot(domContainer, <App />)");
@@ -23146,9 +23146,9 @@
                 onRecoverableError = options2.onRecoverableError;
               }
             }
-            var root2 = createHydrationContainer(initialChildren, null, container, ConcurrentRoot, hydrationCallbacks, isStrictMode, concurrentUpdatesByDefaultOverride, identifierPrefix, onRecoverableError);
-            markContainerAsRoot(root2.current, container);
-            listenToAllSupportedEvents(container);
+            var root2 = createHydrationContainer(initialChildren, null, container2, ConcurrentRoot, hydrationCallbacks, isStrictMode, concurrentUpdatesByDefaultOverride, identifierPrefix, onRecoverableError);
+            markContainerAsRoot(root2.current, container2);
+            listenToAllSupportedEvents(container2);
             if (mutableSources) {
               for (var i = 0; i < mutableSources.length; i++) {
                 var mutableSource = mutableSources[i];
@@ -23163,13 +23163,13 @@
           function isValidContainerLegacy(node) {
             return !!(node && (node.nodeType === ELEMENT_NODE || node.nodeType === DOCUMENT_NODE || node.nodeType === DOCUMENT_FRAGMENT_NODE || node.nodeType === COMMENT_NODE && node.nodeValue === " react-mount-point-unstable "));
           }
-          function warnIfReactDOMContainerInDEV(container) {
+          function warnIfReactDOMContainerInDEV(container2) {
             {
-              if (container.nodeType === ELEMENT_NODE && container.tagName && container.tagName.toUpperCase() === "BODY") {
+              if (container2.nodeType === ELEMENT_NODE && container2.tagName && container2.tagName.toUpperCase() === "BODY") {
                 error("createRoot(): Creating roots directly with document.body is discouraged, since its children are often manipulated by third-party scripts and browser extensions. This may lead to subtle reconciliation issues. Try using a container element created for your app.");
               }
-              if (isContainerMarkedAsRoot(container)) {
-                if (container._reactRootContainer) {
+              if (isContainerMarkedAsRoot(container2)) {
+                if (container2._reactRootContainer) {
                   error("You are calling ReactDOMClient.createRoot() on a container that was previously passed to ReactDOM.render(). This is not supported.");
                 } else {
                   error("You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.");
@@ -23180,39 +23180,39 @@
           var ReactCurrentOwner$3 = ReactSharedInternals.ReactCurrentOwner;
           var topLevelUpdateWarnings;
           {
-            topLevelUpdateWarnings = function(container) {
-              if (container._reactRootContainer && container.nodeType !== COMMENT_NODE) {
-                var hostInstance = findHostInstanceWithNoPortals(container._reactRootContainer.current);
+            topLevelUpdateWarnings = function(container2) {
+              if (container2._reactRootContainer && container2.nodeType !== COMMENT_NODE) {
+                var hostInstance = findHostInstanceWithNoPortals(container2._reactRootContainer.current);
                 if (hostInstance) {
-                  if (hostInstance.parentNode !== container) {
+                  if (hostInstance.parentNode !== container2) {
                     error("render(...): It looks like the React-rendered content of this container was removed without using React. This is not supported and will cause errors. Instead, call ReactDOM.unmountComponentAtNode to empty a container.");
                   }
                 }
               }
-              var isRootRenderedBySomeReact = !!container._reactRootContainer;
-              var rootEl = getReactRootElementInContainer(container);
+              var isRootRenderedBySomeReact = !!container2._reactRootContainer;
+              var rootEl = getReactRootElementInContainer(container2);
               var hasNonRootReactChild = !!(rootEl && getInstanceFromNode(rootEl));
               if (hasNonRootReactChild && !isRootRenderedBySomeReact) {
                 error("render(...): Replacing React-rendered children with a new root component. If you intended to update the children of this node, you should instead have the existing children update their state and render the new components instead of calling ReactDOM.render.");
               }
-              if (container.nodeType === ELEMENT_NODE && container.tagName && container.tagName.toUpperCase() === "BODY") {
+              if (container2.nodeType === ELEMENT_NODE && container2.tagName && container2.tagName.toUpperCase() === "BODY") {
                 error("render(): Rendering components directly into document.body is discouraged, since its children are often manipulated by third-party scripts and browser extensions. This may lead to subtle reconciliation issues. Try rendering into a container element created for your app.");
               }
             };
           }
-          function getReactRootElementInContainer(container) {
-            if (!container) {
+          function getReactRootElementInContainer(container2) {
+            if (!container2) {
               return null;
             }
-            if (container.nodeType === DOCUMENT_NODE) {
-              return container.documentElement;
+            if (container2.nodeType === DOCUMENT_NODE) {
+              return container2.documentElement;
             } else {
-              return container.firstChild;
+              return container2.firstChild;
             }
           }
           function noopOnRecoverableError() {
           }
-          function legacyCreateRootFromDOMContainer(container, initialChildren, parentComponent, callback, isHydrationContainer) {
+          function legacyCreateRootFromDOMContainer(container2, initialChildren, parentComponent, callback, isHydrationContainer) {
             if (isHydrationContainer) {
               if (typeof callback === "function") {
                 var originalCallback = callback;
@@ -23224,7 +23224,7 @@
               var root2 = createHydrationContainer(
                 initialChildren,
                 callback,
-                container,
+                container2,
                 LegacyRoot,
                 null,
                 // hydrationCallbacks
@@ -23236,16 +23236,16 @@
                 // identifierPrefix
                 noopOnRecoverableError
               );
-              container._reactRootContainer = root2;
-              markContainerAsRoot(root2.current, container);
-              var rootContainerElement = container.nodeType === COMMENT_NODE ? container.parentNode : container;
+              container2._reactRootContainer = root2;
+              markContainerAsRoot(root2.current, container2);
+              var rootContainerElement = container2.nodeType === COMMENT_NODE ? container2.parentNode : container2;
               listenToAllSupportedEvents(rootContainerElement);
               flushSync();
               return root2;
             } else {
               var rootSibling;
-              while (rootSibling = container.lastChild) {
-                container.removeChild(rootSibling);
+              while (rootSibling = container2.lastChild) {
+                container2.removeChild(rootSibling);
               }
               if (typeof callback === "function") {
                 var _originalCallback = callback;
@@ -23255,7 +23255,7 @@
                 };
               }
               var _root = createContainer(
-                container,
+                container2,
                 LegacyRoot,
                 null,
                 // hydrationCallbacks
@@ -23267,9 +23267,9 @@
                 // identifierPrefix
                 noopOnRecoverableError
               );
-              container._reactRootContainer = _root;
-              markContainerAsRoot(_root.current, container);
-              var _rootContainerElement = container.nodeType === COMMENT_NODE ? container.parentNode : container;
+              container2._reactRootContainer = _root;
+              markContainerAsRoot(_root.current, container2);
+              var _rootContainerElement = container2.nodeType === COMMENT_NODE ? container2.parentNode : container2;
               listenToAllSupportedEvents(_rootContainerElement);
               flushSync(function() {
                 updateContainer(initialChildren, _root, parentComponent, callback);
@@ -23284,15 +23284,15 @@
               }
             }
           }
-          function legacyRenderSubtreeIntoContainer(parentComponent, children, container, forceHydrate, callback) {
+          function legacyRenderSubtreeIntoContainer(parentComponent, children, container2, forceHydrate, callback) {
             {
-              topLevelUpdateWarnings(container);
+              topLevelUpdateWarnings(container2);
               warnOnInvalidCallback$1(callback === void 0 ? null : callback, "render");
             }
-            var maybeRoot = container._reactRootContainer;
+            var maybeRoot = container2._reactRootContainer;
             var root2;
             if (!maybeRoot) {
-              root2 = legacyCreateRootFromDOMContainer(container, children, parentComponent, callback, forceHydrate);
+              root2 = legacyCreateRootFromDOMContainer(container2, children, parentComponent, callback, forceHydrate);
             } else {
               root2 = maybeRoot;
               if (typeof callback === "function") {
@@ -23332,35 +23332,35 @@
               return findHostInstanceWithWarning(componentOrElement, "findDOMNode");
             }
           }
-          function hydrate(element, container, callback) {
+          function hydrate(element, container2, callback) {
             {
               error("ReactDOM.hydrate is no longer supported in React 18. Use hydrateRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot");
             }
-            if (!isValidContainerLegacy(container)) {
+            if (!isValidContainerLegacy(container2)) {
               throw new Error("Target container is not a DOM element.");
             }
             {
-              var isModernRoot = isContainerMarkedAsRoot(container) && container._reactRootContainer === void 0;
+              var isModernRoot = isContainerMarkedAsRoot(container2) && container2._reactRootContainer === void 0;
               if (isModernRoot) {
                 error("You are calling ReactDOM.hydrate() on a container that was previously passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call hydrateRoot(container, element)?");
               }
             }
-            return legacyRenderSubtreeIntoContainer(null, element, container, true, callback);
+            return legacyRenderSubtreeIntoContainer(null, element, container2, true, callback);
           }
-          function render(element, container, callback) {
+          function render(element, container2, callback) {
             {
               error("ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot");
             }
-            if (!isValidContainerLegacy(container)) {
+            if (!isValidContainerLegacy(container2)) {
               throw new Error("Target container is not a DOM element.");
             }
             {
-              var isModernRoot = isContainerMarkedAsRoot(container) && container._reactRootContainer === void 0;
+              var isModernRoot = isContainerMarkedAsRoot(container2) && container2._reactRootContainer === void 0;
               if (isModernRoot) {
                 error("You are calling ReactDOM.render() on a container that was previously passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call root.render(element)?");
               }
             }
-            return legacyRenderSubtreeIntoContainer(null, element, container, false, callback);
+            return legacyRenderSubtreeIntoContainer(null, element, container2, false, callback);
           }
           function unstable_renderSubtreeIntoContainer(parentComponent, element, containerNode, callback) {
             {
@@ -23375,42 +23375,42 @@
             return legacyRenderSubtreeIntoContainer(parentComponent, element, containerNode, false, callback);
           }
           var didWarnAboutUnmountComponentAtNode = false;
-          function unmountComponentAtNode(container) {
+          function unmountComponentAtNode(container2) {
             {
               if (!didWarnAboutUnmountComponentAtNode) {
                 didWarnAboutUnmountComponentAtNode = true;
                 error("unmountComponentAtNode is deprecated and will be removed in the next major release. Switch to the createRoot API. Learn more: https://reactjs.org/link/switch-to-createroot");
               }
             }
-            if (!isValidContainerLegacy(container)) {
+            if (!isValidContainerLegacy(container2)) {
               throw new Error("unmountComponentAtNode(...): Target container is not a DOM element.");
             }
             {
-              var isModernRoot = isContainerMarkedAsRoot(container) && container._reactRootContainer === void 0;
+              var isModernRoot = isContainerMarkedAsRoot(container2) && container2._reactRootContainer === void 0;
               if (isModernRoot) {
                 error("You are calling ReactDOM.unmountComponentAtNode() on a container that was previously passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call root.unmount()?");
               }
             }
-            if (container._reactRootContainer) {
+            if (container2._reactRootContainer) {
               {
-                var rootEl = getReactRootElementInContainer(container);
+                var rootEl = getReactRootElementInContainer(container2);
                 var renderedByDifferentReact = rootEl && !getInstanceFromNode(rootEl);
                 if (renderedByDifferentReact) {
                   error("unmountComponentAtNode(): The node you're attempting to unmount was rendered by another copy of React.");
                 }
               }
               flushSync(function() {
-                legacyRenderSubtreeIntoContainer(null, null, container, false, function() {
-                  container._reactRootContainer = null;
-                  unmarkContainerAsRoot(container);
+                legacyRenderSubtreeIntoContainer(null, null, container2, false, function() {
+                  container2._reactRootContainer = null;
+                  unmarkContainerAsRoot(container2);
                 });
               });
               return true;
             } else {
               {
-                var _rootEl = getReactRootElementInContainer(container);
+                var _rootEl = getReactRootElementInContainer(container2);
                 var hasNonRootReactChild = !!(_rootEl && getInstanceFromNode(_rootEl));
-                var isContainerReactRoot = container.nodeType === ELEMENT_NODE && isValidContainerLegacy(container.parentNode) && !!container.parentNode._reactRootContainer;
+                var isContainerReactRoot = container2.nodeType === ELEMENT_NODE && isValidContainerLegacy(container2.parentNode) && !!container2.parentNode._reactRootContainer;
                 if (hasNonRootReactChild) {
                   error("unmountComponentAtNode(): The node you're attempting to unmount was rendered by React and is not a top-level container. %s", isContainerReactRoot ? "You may have accidentally passed in a React root node instead of its container." : "Instead, have the parent component update its state and rerender in order to remove this component.");
                 }
@@ -23432,12 +23432,12 @@
           }
           setRestoreImplementation(restoreControlledState$3);
           setBatchingImplementation(batchedUpdates$1, discreteUpdates, flushSync);
-          function createPortal$1(children, container) {
+          function createPortal$1(children, container2) {
             var key = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : null;
-            if (!isValidContainer(container)) {
+            if (!isValidContainer(container2)) {
               throw new Error("Target container is not a DOM element.");
             }
-            return createPortal(children, container, null, key);
+            return createPortal(children, container2, null, key);
           }
           function renderSubtreeIntoContainer(parentComponent, element, containerNode, callback) {
             return unstable_renderSubtreeIntoContainer(parentComponent, element, containerNode, callback);
@@ -23448,21 +23448,21 @@
             // This is an array for better minification.
             Events: [getInstanceFromNode, getNodeFromInstance, getFiberCurrentPropsFromNode, enqueueStateRestore, restoreStateIfNeeded, batchedUpdates$1]
           };
-          function createRoot$1(container, options2) {
+          function createRoot$1(container2, options2) {
             {
               if (!Internals.usingClientEntryPoint && true) {
                 error('You are importing createRoot from "react-dom" which is not supported. You should instead import it from "react-dom/client".');
               }
             }
-            return createRoot2(container, options2);
+            return createRoot2(container2, options2);
           }
-          function hydrateRoot$1(container, initialChildren, options2) {
+          function hydrateRoot$1(container2, initialChildren, options2) {
             {
               if (!Internals.usingClientEntryPoint && true) {
                 error('You are importing hydrateRoot from "react-dom" which is not supported. You should instead import it from "react-dom/client".');
               }
             }
-            return hydrateRoot(container, initialChildren, options2);
+            return hydrateRoot(container2, initialChildren, options2);
           }
           function flushSync$1(fn) {
             {
@@ -23553,24 +23553,839 @@
   });
 
   // app/javascript/application.js
-  var import_react2 = __toESM(require_react());
+  var import_react12 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // app/javascript/App.jsx
+  var import_react11 = __toESM(require_react());
+
+  // app/javascript/context/GameContext.js
   var import_react = __toESM(require_react());
+  var GameContext = (0, import_react.createContext)(null);
+  function GameProvider({ value, children }) {
+    return /* @__PURE__ */ import_react.default.createElement(GameContext.Provider, { value }, children);
+  }
+  function useGame() {
+    const context = (0, import_react.useContext)(GameContext);
+    if (!context) {
+      throw new Error("useGame must be used within a GameProvider");
+    }
+    return context;
+  }
+
+  // app/javascript/hooks/useGameState.js
+  var import_react2 = __toESM(require_react());
+
+  // app/javascript/gameData.js
+  var HERBS = {
+    herb: {
+      name: "\u85AC\u8349",
+      tier: 1,
+      growTime: 1,
+      seedCost: 0,
+      unlockGold: 0
+    },
+    poison_herb: {
+      name: "\u6BD2\u8349",
+      tier: 2,
+      growTime: 2,
+      seedCost: 100,
+      unlockGold: 200
+    },
+    magic_herb: {
+      name: "\u9B54\u8349",
+      tier: 2,
+      growTime: 2.5,
+      seedCost: 150,
+      unlockGold: 300
+    },
+    holy_herb: {
+      name: "\u8056\u8349",
+      tier: 2,
+      growTime: 3,
+      seedCost: 200,
+      unlockGold: 400
+    },
+    dragon_herb: {
+      name: "\u7ADC\u8349",
+      tier: 3,
+      growTime: 5,
+      seedCost: 1e3,
+      unlockGold: 2e3
+    },
+    celestial_herb: {
+      name: "\u5929\u8349",
+      tier: 3,
+      growTime: 6,
+      seedCost: 1500,
+      unlockGold: 3e3
+    },
+    phantom_herb: {
+      name: "\u5E7B\u8349",
+      tier: 3,
+      growTime: 8,
+      seedCost: 2e3,
+      unlockGold: 5e3
+    }
+  };
+  var RECIPES = {
+    recovery_potion: {
+      name: "\u56DE\u5FA9\u30DD\u30FC\u30B7\u30E7\u30F3",
+      ingredients: { herb: 3, water: 1 },
+      sellPrice: 10,
+      unlockGold: 0,
+      craftTime: 2
+    },
+    antidote: {
+      name: "\u89E3\u6BD2\u30DD\u30FC\u30B7\u30E7\u30F3",
+      ingredients: { herb: 2, poison_herb: 2, water: 1 },
+      sellPrice: 50,
+      unlockGold: 500,
+      craftTime: 4
+    },
+    mana_potion: {
+      name: "\u30DE\u30CA\u30DD\u30FC\u30B7\u30E7\u30F3",
+      ingredients: { herb: 2, magic_herb: 2 },
+      sellPrice: 40,
+      unlockGold: 400,
+      craftTime: 3
+    },
+    purification_water: {
+      name: "\u6D44\u5316\u306E\u6C34",
+      ingredients: { holy_herb: 2, water: 1 },
+      sellPrice: 60,
+      unlockGold: 600,
+      craftTime: 5
+    },
+    dragon_elixir: {
+      name: "\u7ADC\u306E\u970A\u85AC",
+      ingredients: { dragon_herb: 3, herb: 2, water: 2 },
+      sellPrice: 200,
+      unlockGold: 3e3,
+      craftTime: 8
+    },
+    celestial_tonic: {
+      name: "\u5929\u306E\u5F37\u58EE\u5264",
+      ingredients: { celestial_herb: 3, holy_herb: 2, water: 2 },
+      sellPrice: 300,
+      unlockGold: 5e3,
+      craftTime: 10
+    },
+    elixir: {
+      name: "\u30A8\u30EA\u30AF\u30B5\u30FC",
+      ingredients: {
+        herb: 5,
+        poison_herb: 5,
+        magic_herb: 5,
+        holy_herb: 5,
+        dragon_herb: 5,
+        celestial_herb: 5,
+        phantom_herb: 5,
+        water: 10
+      },
+      sellPrice: 0,
+      unlockGold: 1e4,
+      craftTime: 30,
+      isGameClear: true
+    }
+  };
+  var UPGRADES = {
+    harvest_speed: {
+      name: "\u63A1\u53D6\u901F\u5EA6\u30A2\u30C3\u30D7",
+      description: "\u85AC\u8349\u306E\u63A1\u53D6\u901F\u5EA6\u304C\u4E0A\u304C\u308B",
+      baseCost: 50,
+      costMultiplier: 1.5,
+      maxLevel: 20,
+      effect: (level) => 1 + level * 0.5
+    },
+    extra_field: {
+      name: "\u7551\u62E1\u5F35",
+      description: "\u85AC\u8349\u7551\u30921\u3064\u8FFD\u52A0",
+      baseCost: 100,
+      costMultiplier: 2,
+      maxLevel: 6
+    },
+    auto_craft_slot: {
+      name: "\u81EA\u52D5\u8ABF\u5408\u6A5F",
+      description: "\u81EA\u52D5\u8ABF\u5408\u30B9\u30ED\u30C3\u30C8\u30921\u3064\u8FFD\u52A0",
+      baseCost: 500,
+      costMultiplier: 3,
+      maxLevel: 3
+    },
+    auto_craft_speed: {
+      name: "\u8ABF\u5408\u901F\u5EA6\u30A2\u30C3\u30D7",
+      description: "\u81EA\u52D5\u8ABF\u5408\u306E\u901F\u5EA6\u304C\u4E0A\u304C\u308B",
+      baseCost: 300,
+      costMultiplier: 1.8,
+      maxLevel: 15,
+      effect: (level) => 1 + level * 0.3
+    }
+  };
+  function getUpgradeCost(upgradeKey, currentLevel) {
+    const upgrade = UPGRADES[upgradeKey];
+    return Math.floor(upgrade.baseCost * Math.pow(upgrade.costMultiplier, currentLevel));
+  }
+  function getInitialGameState() {
+    return {
+      gold: 0,
+      herbs: { herb: 0 },
+      water: 999999,
+      seedsOwned: ["herb"],
+      fields: [{ slot: 1, seedType: "herb", unlocked: true }],
+      potions: {},
+      upgrades: {
+        harvest_speed: 0,
+        extra_field: 0,
+        auto_craft_slot: 0,
+        auto_craft_speed: 0
+      },
+      autoCraftSlots: [],
+      unlockedRecipes: ["recovery_potion"],
+      gameClear: false,
+      lastTickAt: Date.now(),
+      totalEarned: 0
+    };
+  }
+
+  // app/javascript/utils/gameLogic.js
+  function getHarvestSpeedMultiplier(state) {
+    const level = state.upgrades.harvest_speed || 0;
+    return UPGRADES.harvest_speed.effect(level);
+  }
+  function getAutoCraftSpeedMultiplier(state) {
+    const level = state.upgrades.auto_craft_speed || 0;
+    return UPGRADES.auto_craft_speed.effect(level);
+  }
+  function canCraft(state, recipeKey) {
+    const recipe = RECIPES[recipeKey];
+    if (!recipe)
+      return false;
+    if (!state.unlockedRecipes.includes(recipeKey))
+      return false;
+    for (const [ingredient, amount] of Object.entries(recipe.ingredients)) {
+      if (ingredient === "water") {
+        if ((state.water || 0) < amount)
+          return false;
+      } else {
+        if (Math.floor(state.herbs[ingredient] || 0) < amount)
+          return false;
+      }
+    }
+    return true;
+  }
+  function consumeIngredients(state, recipeKey) {
+    const recipe = RECIPES[recipeKey];
+    for (const [ingredient, amount] of Object.entries(recipe.ingredients)) {
+      if (ingredient === "water") {
+        state.water -= amount;
+      } else {
+        state.herbs[ingredient] = (state.herbs[ingredient] || 0) - amount;
+      }
+    }
+  }
+  function craft(state, recipeKey) {
+    if (!canCraft(state, recipeKey))
+      return state;
+    const newState = JSON.parse(JSON.stringify(state));
+    consumeIngredients(newState, recipeKey);
+    newState.potions[recipeKey] = (newState.potions[recipeKey] || 0) + 1;
+    if (RECIPES[recipeKey].isGameClear) {
+      newState.gameClear = true;
+    }
+    return newState;
+  }
+  function sellPotion(state, recipeKey, amount) {
+    const currentAmount = state.potions[recipeKey] || 0;
+    const sellAmount = Math.min(amount, currentAmount);
+    if (sellAmount <= 0)
+      return state;
+    const recipe = RECIPES[recipeKey];
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.potions[recipeKey] -= sellAmount;
+    const earned = recipe.sellPrice * sellAmount;
+    newState.gold += earned;
+    newState.totalEarned += earned;
+    return newState;
+  }
+  function sellAllPotions(state) {
+    let newState = JSON.parse(JSON.stringify(state));
+    for (const [key, amount] of Object.entries(newState.potions)) {
+      if (amount > 0 && RECIPES[key] && RECIPES[key].sellPrice > 0) {
+        const earned = RECIPES[key].sellPrice * amount;
+        newState.gold += earned;
+        newState.totalEarned += earned;
+        newState.potions[key] = 0;
+      }
+    }
+    return newState;
+  }
+  function buySeed(state, herbKey) {
+    const herb = HERBS[herbKey];
+    if (!herb || state.seedsOwned.includes(herbKey))
+      return state;
+    if (state.gold < herb.seedCost)
+      return state;
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.gold -= herb.seedCost;
+    newState.seedsOwned.push(herbKey);
+    newState.herbs[herbKey] = newState.herbs[herbKey] || 0;
+    return newState;
+  }
+  function buyUpgrade(state, upgradeKey) {
+    const upgrade = UPGRADES[upgradeKey];
+    if (!upgrade)
+      return state;
+    const currentLevel = state.upgrades[upgradeKey] || 0;
+    if (currentLevel >= upgrade.maxLevel)
+      return state;
+    const cost = getUpgradeCost(upgradeKey, currentLevel);
+    if (state.gold < cost)
+      return state;
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.gold -= cost;
+    newState.upgrades[upgradeKey] = currentLevel + 1;
+    if (upgradeKey === "extra_field") {
+      const newSlot = newState.fields.length + 1;
+      newState.fields.push({ slot: newSlot, seedType: "herb", unlocked: true });
+    }
+    if (upgradeKey === "auto_craft_slot") {
+      newState.autoCraftSlots.push({ recipe: null, progress: 0 });
+    }
+    return newState;
+  }
+  function unlockRecipe(state, recipeKey) {
+    const recipe = RECIPES[recipeKey];
+    if (!recipe || state.unlockedRecipes.includes(recipeKey))
+      return state;
+    if (state.gold < recipe.unlockGold)
+      return state;
+    for (const ingredient of Object.keys(recipe.ingredients)) {
+      if (ingredient === "water")
+        continue;
+      if (!state.seedsOwned.includes(ingredient))
+        return state;
+    }
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.gold -= recipe.unlockGold;
+    newState.unlockedRecipes.push(recipeKey);
+    return newState;
+  }
+  function changeFieldSeed(state, slotIndex, seedType) {
+    if (!state.seedsOwned.includes(seedType))
+      return state;
+    if (slotIndex < 0 || slotIndex >= state.fields.length)
+      return state;
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.fields[slotIndex].seedType = seedType;
+    return newState;
+  }
+  function setAutoCraftRecipe(state, slotIndex, recipeKey) {
+    if (slotIndex < 0 || slotIndex >= state.autoCraftSlots.length)
+      return state;
+    if (recipeKey && !state.unlockedRecipes.includes(recipeKey))
+      return state;
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.autoCraftSlots[slotIndex].recipe = recipeKey;
+    newState.autoCraftSlots[slotIndex].progress = 0;
+    return newState;
+  }
+  function processTick(state, now) {
+    const deltaMs = now - state.lastTickAt;
+    const deltaSeconds = Math.min(deltaMs / 1e3, 8 * 3600);
+    if (deltaSeconds <= 0)
+      return state;
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.lastTickAt = now;
+    const speedMultiplier = getHarvestSpeedMultiplier(newState);
+    for (const field of newState.fields) {
+      if (!field.unlocked || !field.seedType)
+        continue;
+      const herbDef = HERBS[field.seedType];
+      if (!herbDef)
+        continue;
+      const harvestRate = 1 / herbDef.growTime * speedMultiplier;
+      const harvested = harvestRate * deltaSeconds;
+      newState.herbs[field.seedType] = (newState.herbs[field.seedType] || 0) + harvested;
+    }
+    const craftSpeedMultiplier = getAutoCraftSpeedMultiplier(newState);
+    for (const slot of newState.autoCraftSlots) {
+      if (!slot.recipe)
+        continue;
+      const recipe = RECIPES[slot.recipe];
+      if (!recipe)
+        continue;
+      slot.progress += deltaSeconds * craftSpeedMultiplier;
+      while (slot.progress >= recipe.craftTime && canCraft(newState, slot.recipe)) {
+        consumeIngredients(newState, slot.recipe);
+        newState.potions[slot.recipe] = (newState.potions[slot.recipe] || 0) + 1;
+        slot.progress -= recipe.craftTime;
+        if (recipe.isGameClear) {
+          newState.gameClear = true;
+        }
+      }
+      if (slot.progress > recipe.craftTime) {
+        slot.progress = recipe.craftTime;
+      }
+    }
+    return newState;
+  }
+  function getAvailableSeeds(state) {
+    return Object.entries(HERBS).filter(([key, herb]) => !state.seedsOwned.includes(key) && herb.seedCost > 0).filter(([key, herb]) => state.totalEarned >= herb.unlockGold * 0.5).map(([key, herb]) => ({ key, ...herb }));
+  }
+  function getAvailableRecipes(state) {
+    return Object.entries(RECIPES).filter(([key]) => !state.unlockedRecipes.includes(key)).filter(([key, recipe]) => {
+      for (const ingredient of Object.keys(recipe.ingredients)) {
+        if (ingredient === "water")
+          continue;
+        if (!state.seedsOwned.includes(ingredient))
+          return false;
+      }
+      return true;
+    }).map(([key, recipe]) => ({ key, ...recipe }));
+  }
+
+  // app/javascript/utils/api.js
+  var API_BASE = "/api/v1/game";
+  async function loadGame(uuid) {
+    const response = await fetch(`${API_BASE}/load?uuid=${encodeURIComponent(uuid)}`);
+    if (!response.ok)
+      throw new Error("Failed to load game");
+    return response.json();
+  }
+  async function saveGame(uuid, gameState) {
+    const response = await fetch(`${API_BASE}/save`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ uuid, game_state: gameState })
+    });
+    if (!response.ok)
+      throw new Error("Failed to save game");
+    return response.json();
+  }
+  async function resetGame(uuid) {
+    const response = await fetch(`${API_BASE}/reset?uuid=${encodeURIComponent(uuid)}`, {
+      method: "DELETE"
+    });
+    if (!response.ok)
+      throw new Error("Failed to reset game");
+    return response.json();
+  }
+
+  // app/javascript/hooks/useGameState.js
+  function getUuid() {
+    let uuid = localStorage.getItem("craft_game_uuid");
+    if (!uuid) {
+      uuid = crypto.randomUUID();
+      localStorage.setItem("craft_game_uuid", uuid);
+    }
+    return uuid;
+  }
+  function normalizeState(raw) {
+    const initial = getInitialGameState();
+    return {
+      gold: raw.gold ?? initial.gold,
+      herbs: raw.herbs ?? initial.herbs,
+      water: raw.water ?? initial.water,
+      seedsOwned: raw.seedsOwned ?? raw.seeds_owned ?? initial.seedsOwned,
+      fields: (raw.fields ?? initial.fields).map((f) => ({
+        slot: f.slot,
+        seedType: f.seedType ?? f.seed_type ?? "herb",
+        unlocked: f.unlocked ?? true
+      })),
+      potions: raw.potions ?? initial.potions,
+      upgrades: normalizeUpgrades(raw.upgrades ?? initial.upgrades),
+      autoCraftSlots: (raw.autoCraftSlots ?? raw.auto_craft_slots ?? initial.autoCraftSlots).map((s) => ({
+        recipe: s.recipe ?? null,
+        progress: s.progress ?? 0
+      })),
+      unlockedRecipes: raw.unlockedRecipes ?? raw.unlocked_recipes ?? initial.unlockedRecipes,
+      gameClear: raw.gameClear ?? raw.game_clear ?? initial.gameClear,
+      lastTickAt: raw.lastTickAt ?? raw.last_tick_at ?? initial.lastTickAt,
+      totalEarned: raw.totalEarned ?? raw.total_earned ?? initial.totalEarned
+    };
+  }
+  function normalizeUpgrades(u) {
+    return {
+      harvest_speed: u.harvest_speed ?? u.harvest_speed_level ?? 0,
+      extra_field: u.extra_field ?? u.extra_field_level ?? 0,
+      auto_craft_slot: u.auto_craft_slot ?? u.auto_craft_slot_level ?? 0,
+      auto_craft_speed: u.auto_craft_speed ?? u.auto_craft_speed_level ?? 0
+    };
+  }
+  function gameReducer(state, action) {
+    switch (action.type) {
+      case "TICK":
+        return processTick(state, action.now);
+      case "CRAFT":
+        return craft(state, action.recipeKey);
+      case "SELL":
+        return sellPotion(state, action.recipeKey, action.amount);
+      case "SELL_ALL":
+        return sellAllPotions(state);
+      case "BUY_SEED":
+        return buySeed(state, action.herbKey);
+      case "BUY_UPGRADE":
+        return buyUpgrade(state, action.upgradeKey);
+      case "UNLOCK_RECIPE":
+        return unlockRecipe(state, action.recipeKey);
+      case "CHANGE_FIELD_SEED":
+        return changeFieldSeed(state, action.slotIndex, action.seedType);
+      case "SET_AUTO_CRAFT":
+        return setAutoCraftRecipe(state, action.slotIndex, action.recipeKey);
+      case "LOAD_STATE":
+        return { ...normalizeState(action.state), lastTickAt: Date.now() };
+      case "RESET":
+        return { ...getInitialGameState(), lastTickAt: Date.now() };
+      default:
+        return state;
+    }
+  }
+  function useGameState() {
+    const [state, dispatch] = (0, import_react2.useReducer)(gameReducer, null, getInitialGameState);
+    const stateRef = (0, import_react2.useRef)(state);
+    const uuid = (0, import_react2.useRef)(getUuid());
+    const loaded = (0, import_react2.useRef)(false);
+    stateRef.current = state;
+    (0, import_react2.useEffect)(() => {
+      const intervalId = setInterval(() => {
+        dispatch({ type: "TICK", now: Date.now() });
+      }, 100);
+      return () => clearInterval(intervalId);
+    }, []);
+    (0, import_react2.useEffect)(() => {
+      if (loaded.current)
+        return;
+      loaded.current = true;
+      loadGame(uuid.current).then((data) => {
+        if (data.game_state && Object.keys(data.game_state).length > 0) {
+          const serverState = data.game_state;
+          dispatch({ type: "LOAD_STATE", state: serverState });
+        }
+      }).catch((err) => {
+        console.warn("Failed to load from server, using local state:", err);
+        const saved = localStorage.getItem("craft_game_state");
+        if (saved) {
+          try {
+            dispatch({ type: "LOAD_STATE", state: JSON.parse(saved) });
+          } catch (e) {
+            console.warn("Failed to parse local save:", e);
+          }
+        }
+      });
+    }, []);
+    (0, import_react2.useEffect)(() => {
+      const saveInterval = setInterval(() => {
+        const currentState = stateRef.current;
+        localStorage.setItem("craft_game_state", JSON.stringify(currentState));
+        saveGame(uuid.current, currentState).catch(
+          (err) => console.warn("Auto-save failed:", err)
+        );
+      }, 3e4);
+      return () => clearInterval(saveInterval);
+    }, []);
+    (0, import_react2.useEffect)(() => {
+      const handleUnload = () => {
+        localStorage.setItem("craft_game_state", JSON.stringify(stateRef.current));
+      };
+      window.addEventListener("beforeunload", handleUnload);
+      return () => window.removeEventListener("beforeunload", handleUnload);
+    }, []);
+    const manualSave = (0, import_react2.useCallback)(() => {
+      const currentState = stateRef.current;
+      localStorage.setItem("craft_game_state", JSON.stringify(currentState));
+      return saveGame(uuid.current, currentState);
+    }, []);
+    const handleReset = (0, import_react2.useCallback)(() => {
+      dispatch({ type: "RESET" });
+      resetGame(uuid.current).catch(
+        (err) => console.warn("Reset failed on server:", err)
+      );
+      localStorage.removeItem("craft_game_state");
+    }, []);
+    return { state, dispatch, manualSave, handleReset };
+  }
+
+  // app/javascript/components/GameScreen.jsx
+  var import_react10 = __toESM(require_react());
+
+  // app/javascript/components/HerbFields.jsx
+  var import_react3 = __toESM(require_react());
+  var HerbFields = () => {
+    const { state, dispatch } = useGame();
+    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "panel" }, /* @__PURE__ */ import_react3.default.createElement("h2", null, "\u85AC\u8349\u7551"), /* @__PURE__ */ import_react3.default.createElement("div", { className: "fields-grid" }, state.fields.map((field, index) => {
+      if (!field.unlocked)
+        return null;
+      const herbDef = HERBS[field.seedType];
+      const herbCount = state.herbs[field.seedType] || 0;
+      const speedMultiplier = getHarvestSpeedMultiplier(state);
+      const harvestRate = herbDef ? 1 / herbDef.growTime * speedMultiplier : 0;
+      const fractional = herbCount - Math.floor(herbCount);
+      return /* @__PURE__ */ import_react3.default.createElement("div", { key: index, className: "field-card" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "field-header" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: "field-label" }, "\u7551 ", field.slot), /* @__PURE__ */ import_react3.default.createElement(
+        "select",
+        {
+          value: field.seedType,
+          onChange: (e) => dispatch({
+            type: "CHANGE_FIELD_SEED",
+            slotIndex: index,
+            seedType: e.target.value
+          })
+        },
+        [...state.seedsOwned].sort((a, b) => (HERBS[a]?.seedCost || 0) - (HERBS[b]?.seedCost || 0)).map((seed) => /* @__PURE__ */ import_react3.default.createElement("option", { key: seed, value: seed }, HERBS[seed]?.name || seed))
+      )), /* @__PURE__ */ import_react3.default.createElement("div", { className: "field-info" }, /* @__PURE__ */ import_react3.default.createElement("span", null, herbDef?.name, ": ", Math.floor(herbCount)), /* @__PURE__ */ import_react3.default.createElement("span", { className: "harvest-rate" }, harvestRate.toFixed(1), "/\u79D2")), /* @__PURE__ */ import_react3.default.createElement("div", { className: "progress-bar-container" }, /* @__PURE__ */ import_react3.default.createElement(
+        "div",
+        {
+          className: "progress-bar",
+          style: { width: `${fractional * 100}%` }
+        }
+      )));
+    })));
+  };
+  var HerbFields_default = HerbFields;
+
+  // app/javascript/components/Inventory.jsx
+  var import_react4 = __toESM(require_react());
+  var Inventory = () => {
+    const { state, dispatch } = useGame();
+    const herbEntries = Object.entries(state.herbs || {}).filter(([key]) => state.seedsOwned.includes(key) && HERBS[key]).sort(([a], [b]) => HERBS[a].seedCost - HERBS[b].seedCost);
+    const potionEntries = Object.entries(state.potions || {}).filter(
+      ([key, amount]) => amount > 0 && RECIPES[key]
+    );
+    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "panel" }, /* @__PURE__ */ import_react4.default.createElement("h2", null, "\u6240\u6301\u54C1"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "gold-display" }, /* @__PURE__ */ import_react4.default.createElement("span", { className: "gold-icon" }, "\u{1F4B0}"), /* @__PURE__ */ import_react4.default.createElement("span", { className: "gold-amount" }, Math.floor(state.gold), " G")), /* @__PURE__ */ import_react4.default.createElement("h3", null, "\u85AC\u8349"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "inventory-list" }, herbEntries.map(([key, amount]) => /* @__PURE__ */ import_react4.default.createElement("div", { key, className: "inventory-item" }, /* @__PURE__ */ import_react4.default.createElement("span", null, HERBS[key].name), /* @__PURE__ */ import_react4.default.createElement("span", { className: "item-count" }, Math.floor(amount))))), /* @__PURE__ */ import_react4.default.createElement("h3", null, "\u30DD\u30FC\u30B7\u30E7\u30F3"), potionEntries.length === 0 ? /* @__PURE__ */ import_react4.default.createElement("p", { className: "empty-message" }, "\u307E\u3060\u30DD\u30FC\u30B7\u30E7\u30F3\u304C\u3042\u308A\u307E\u305B\u3093") : /* @__PURE__ */ import_react4.default.createElement("div", { className: "inventory-list" }, potionEntries.sort(([a], [b]) => RECIPES[a].sellPrice - RECIPES[b].sellPrice).map(([key, amount]) => /* @__PURE__ */ import_react4.default.createElement("div", { key, className: "inventory-item" }, /* @__PURE__ */ import_react4.default.createElement("span", null, RECIPES[key].name), /* @__PURE__ */ import_react4.default.createElement("span", { className: "item-count" }, amount), RECIPES[key].sellPrice > 0 && /* @__PURE__ */ import_react4.default.createElement(
+      "button",
+      {
+        className: "btn btn-sell",
+        onClick: () => dispatch({ type: "SELL", recipeKey: key, amount: 1 })
+      },
+      "\u58F2\u308B (",
+      RECIPES[key].sellPrice,
+      "G)"
+    ))), /* @__PURE__ */ import_react4.default.createElement(
+      "button",
+      {
+        className: "btn btn-sell-all",
+        onClick: () => dispatch({ type: "SELL_ALL" })
+      },
+      "\u5168\u3066\u58F2\u308B"
+    )));
+  };
+  var Inventory_default = Inventory;
+
+  // app/javascript/components/CraftingPanel.jsx
+  var import_react5 = __toESM(require_react());
+  var CraftingPanel = () => {
+    const { state, dispatch } = useGame();
+    const unlockedRecipes = state.unlockedRecipes.filter((key) => RECIPES[key]).map((key) => ({ key, ...RECIPES[key] })).sort((a, b) => {
+      if (a.isGameClear)
+        return 1;
+      if (b.isGameClear)
+        return -1;
+      return a.sellPrice - b.sellPrice;
+    });
+    return /* @__PURE__ */ import_react5.default.createElement("div", { className: "panel" }, /* @__PURE__ */ import_react5.default.createElement("h2", null, "\u8ABF\u5408"), /* @__PURE__ */ import_react5.default.createElement("div", { className: "recipe-list" }, unlockedRecipes.map((recipe) => {
+      const craftable = canCraft(state, recipe.key);
+      return /* @__PURE__ */ import_react5.default.createElement("div", { key: recipe.key, className: "recipe-card" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "recipe-header" }, /* @__PURE__ */ import_react5.default.createElement("span", { className: "recipe-name" }, recipe.name), recipe.isGameClear && /* @__PURE__ */ import_react5.default.createElement("span", { className: "badge badge-special" }, "\u6700\u7D42\u76EE\u6A19")), /* @__PURE__ */ import_react5.default.createElement("div", { className: "recipe-ingredients" }, Object.entries(recipe.ingredients).map(([ing, amount]) => {
+        const currentAmount = ing === "water" ? state.water || 0 : Math.floor(state.herbs[ing] || 0);
+        const sufficient = currentAmount >= amount;
+        const ingName = ing === "water" ? "\u6C34" : HERBS[ing]?.name || ing;
+        return /* @__PURE__ */ import_react5.default.createElement(
+          "span",
+          {
+            key: ing,
+            className: `ingredient ${sufficient ? "sufficient" : "insufficient"}`
+          },
+          ingName,
+          ": ",
+          ing === "water" ? `\u221E` : `${currentAmount}/${amount}`
+        );
+      })), /* @__PURE__ */ import_react5.default.createElement("div", { className: "recipe-actions" }, recipe.sellPrice > 0 && /* @__PURE__ */ import_react5.default.createElement("span", { className: "sell-price" }, "\u58F2\u5024: ", recipe.sellPrice, "G"), /* @__PURE__ */ import_react5.default.createElement(
+        "button",
+        {
+          className: "btn btn-craft",
+          disabled: !craftable,
+          onClick: () => dispatch({ type: "CRAFT", recipeKey: recipe.key })
+        },
+        "\u8ABF\u5408\u3059\u308B"
+      )));
+    })));
+  };
+  var CraftingPanel_default = CraftingPanel;
+
+  // app/javascript/components/Shop.jsx
+  var import_react6 = __toESM(require_react());
+  var Shop = () => {
+    const { state, dispatch } = useGame();
+    const availableSeeds = getAvailableSeeds(state);
+    const availableRecipes = getAvailableRecipes(state);
+    const upgradeEntries = Object.entries(UPGRADES).map(([key, upgrade]) => {
+      const currentLevel = state.upgrades[key] || 0;
+      const cost = getUpgradeCost(key, currentLevel);
+      const maxed = currentLevel >= upgrade.maxLevel;
+      return { key, ...upgrade, currentLevel, cost, maxed };
+    });
+    return /* @__PURE__ */ import_react6.default.createElement("div", { className: "panel" }, /* @__PURE__ */ import_react6.default.createElement("h2", null, "\u30B7\u30E7\u30C3\u30D7"), availableSeeds.length > 0 && /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement("h3", null, "\u7A2E\u3092\u8CFC\u5165"), /* @__PURE__ */ import_react6.default.createElement("div", { className: "shop-list" }, availableSeeds.map((seed) => /* @__PURE__ */ import_react6.default.createElement("div", { key: seed.key, className: "shop-item" }, /* @__PURE__ */ import_react6.default.createElement("span", null, seed.name, "\u306E\u7A2E"), /* @__PURE__ */ import_react6.default.createElement(
+      "button",
+      {
+        className: "btn btn-buy",
+        disabled: state.gold < seed.seedCost,
+        onClick: () => dispatch({ type: "BUY_SEED", herbKey: seed.key })
+      },
+      seed.seedCost,
+      " G"
+    ))))), availableRecipes.length > 0 && /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement("h3", null, "\u30EC\u30B7\u30D4\u89E3\u653E"), /* @__PURE__ */ import_react6.default.createElement("div", { className: "shop-list" }, availableRecipes.map((recipe) => /* @__PURE__ */ import_react6.default.createElement("div", { key: recipe.key, className: "shop-item" }, /* @__PURE__ */ import_react6.default.createElement("span", null, recipe.name), /* @__PURE__ */ import_react6.default.createElement(
+      "button",
+      {
+        className: "btn btn-buy",
+        disabled: state.gold < recipe.unlockGold,
+        onClick: () => dispatch({ type: "UNLOCK_RECIPE", recipeKey: recipe.key })
+      },
+      recipe.unlockGold,
+      " G"
+    ))))), /* @__PURE__ */ import_react6.default.createElement("h3", null, "\u30A2\u30C3\u30D7\u30B0\u30EC\u30FC\u30C9"), /* @__PURE__ */ import_react6.default.createElement("div", { className: "shop-list" }, upgradeEntries.map((upgrade) => /* @__PURE__ */ import_react6.default.createElement("div", { key: upgrade.key, className: "shop-item" }, /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("span", null, upgrade.name), /* @__PURE__ */ import_react6.default.createElement("span", { className: "upgrade-level" }, "Lv.", upgrade.currentLevel, "/", upgrade.maxLevel), /* @__PURE__ */ import_react6.default.createElement("p", { className: "upgrade-desc" }, upgrade.description)), /* @__PURE__ */ import_react6.default.createElement(
+      "button",
+      {
+        className: "btn btn-buy",
+        disabled: upgrade.maxed || state.gold < upgrade.cost,
+        onClick: () => dispatch({ type: "BUY_UPGRADE", upgradeKey: upgrade.key })
+      },
+      upgrade.maxed ? "MAX" : `${upgrade.cost} G`
+    )))));
+  };
+  var Shop_default = Shop;
+
+  // app/javascript/components/AutoCraftPanel.jsx
+  var import_react7 = __toESM(require_react());
+  var AutoCraftPanel = () => {
+    const { state, dispatch } = useGame();
+    if (state.autoCraftSlots.length === 0)
+      return null;
+    const speedMultiplier = getAutoCraftSpeedMultiplier(state);
+    return /* @__PURE__ */ import_react7.default.createElement("div", { className: "panel" }, /* @__PURE__ */ import_react7.default.createElement("h2", null, "\u81EA\u52D5\u8ABF\u5408\u6A5F ", /* @__PURE__ */ import_react7.default.createElement("span", { style: { fontSize: "0.75rem", color: "#53d769" } }, "x", speedMultiplier.toFixed(1))), /* @__PURE__ */ import_react7.default.createElement("div", { className: "auto-craft-list" }, state.autoCraftSlots.map((slot, index) => {
+      const recipe = slot.recipe ? RECIPES[slot.recipe] : null;
+      const progress = recipe ? Math.min(slot.progress / recipe.craftTime * 100, 100) : 0;
+      return /* @__PURE__ */ import_react7.default.createElement("div", { key: index, className: "auto-craft-slot" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "auto-craft-header" }, /* @__PURE__ */ import_react7.default.createElement("span", null, "\u30B9\u30ED\u30C3\u30C8 ", index + 1), /* @__PURE__ */ import_react7.default.createElement(
+        "select",
+        {
+          value: slot.recipe || "",
+          onChange: (e) => dispatch({
+            type: "SET_AUTO_CRAFT",
+            slotIndex: index,
+            recipeKey: e.target.value || null
+          })
+        },
+        /* @__PURE__ */ import_react7.default.createElement("option", { value: "" }, "-- \u9078\u629E --"),
+        state.unlockedRecipes.filter((key) => RECIPES[key] && !RECIPES[key].isGameClear).sort((a, b) => RECIPES[a].sellPrice - RECIPES[b].sellPrice).map((key) => /* @__PURE__ */ import_react7.default.createElement("option", { key, value: key }, RECIPES[key].name))
+      )), recipe && /* @__PURE__ */ import_react7.default.createElement("div", { className: "progress-bar-container" }, /* @__PURE__ */ import_react7.default.createElement(
+        "div",
+        {
+          className: "progress-bar progress-bar-craft",
+          style: { width: `${progress}%` }
+        }
+      ), /* @__PURE__ */ import_react7.default.createElement("span", { className: "progress-label" }, slot.progress.toFixed(1), "s / ", recipe.craftTime, "s")));
+    })));
+  };
+  var AutoCraftPanel_default = AutoCraftPanel;
+
+  // app/javascript/components/GameClearModal.jsx
+  var import_react8 = __toESM(require_react());
+  var GameClearModal = ({ onClose }) => {
+    return /* @__PURE__ */ import_react8.default.createElement("div", { className: "modal-overlay" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "modal" }, /* @__PURE__ */ import_react8.default.createElement("h1", { className: "clear-title" }, "GAME CLEAR!"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "clear-message" }, "\u30A8\u30EA\u30AF\u30B5\u30FC\u306E\u8ABF\u5408\u306B\u6210\u529F\u3057\u307E\u3057\u305F\uFF01"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "clear-sub" }, "\u5168\u3066\u306E\u85AC\u8349\u3092\u96C6\u3081\u3001\u4F1D\u8AAC\u306E\u970A\u85AC\u3092\u5B8C\u6210\u3055\u305B\u305F \u3042\u306A\u305F\u306F\u771F\u306E\u932C\u91D1\u8853\u5E2B\u3067\u3059\u3002"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "btn btn-primary", onClick: onClose }, "\u7D9A\u3051\u3066\u30D7\u30EC\u30A4\u3059\u308B")));
+  };
+  var GameClearModal_default = GameClearModal;
+
+  // app/javascript/components/SaveLoadBar.jsx
+  var import_react9 = __toESM(require_react());
+  var SaveLoadBar = ({ onSave, onReset }) => {
+    const [saving, setSaving] = (0, import_react9.useState)(false);
+    const [message, setMessage] = (0, import_react9.useState)("");
+    const handleSave = async () => {
+      setSaving(true);
+      try {
+        await onSave();
+        setMessage("\u30BB\u30FC\u30D6\u3057\u307E\u3057\u305F");
+        setTimeout(() => setMessage(""), 2e3);
+      } catch (e) {
+        setMessage("\u30BB\u30FC\u30D6\u306B\u5931\u6557\u3057\u307E\u3057\u305F");
+        setTimeout(() => setMessage(""), 3e3);
+      }
+      setSaving(false);
+    };
+    const handleReset = () => {
+      if (window.confirm("\u672C\u5F53\u306B\u30EA\u30BB\u30C3\u30C8\u3057\u307E\u3059\u304B\uFF1F\u5168\u3066\u306E\u30C7\u30FC\u30BF\u304C\u5931\u308F\u308C\u307E\u3059\u3002")) {
+        onReset();
+        setMessage("\u30EA\u30BB\u30C3\u30C8\u3057\u307E\u3057\u305F");
+        setTimeout(() => setMessage(""), 2e3);
+      }
+    };
+    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "save-bar" }, /* @__PURE__ */ import_react9.default.createElement("button", { className: "btn btn-save", onClick: handleSave, disabled: saving }, saving ? "\u4FDD\u5B58\u4E2D..." : "\u30BB\u30FC\u30D6"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "btn btn-reset", onClick: handleReset }, "\u30EA\u30BB\u30C3\u30C8"), message && /* @__PURE__ */ import_react9.default.createElement("span", { className: "save-message" }, message));
+  };
+  var SaveLoadBar_default = SaveLoadBar;
+
+  // app/javascript/components/GameScreen.jsx
+  var GameScreen = () => {
+    const { state, manualSave, handleReset } = useGame();
+    const [showClear, setShowClear] = (0, import_react10.useState)(false);
+    const [clearDismissed, setClearDismissed] = (0, import_react10.useState)(false);
+    const [activeTab, setActiveTab] = (0, import_react10.useState)("craft");
+    if (state.gameClear && !showClear && !clearDismissed) {
+      setShowClear(true);
+    }
+    return /* @__PURE__ */ import_react10.default.createElement("div", { className: "game-container" }, /* @__PURE__ */ import_react10.default.createElement("header", { className: "game-header" }, /* @__PURE__ */ import_react10.default.createElement("h1", null, "Craft Game"), /* @__PURE__ */ import_react10.default.createElement(SaveLoadBar_default, { onSave: manualSave, onReset: handleReset })), /* @__PURE__ */ import_react10.default.createElement("div", { className: "game-layout" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "game-left" }, /* @__PURE__ */ import_react10.default.createElement(Inventory_default, null), /* @__PURE__ */ import_react10.default.createElement(HerbFields_default, null)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "game-right" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "tab-bar" }, /* @__PURE__ */ import_react10.default.createElement(
+      "button",
+      {
+        className: `tab ${activeTab === "craft" ? "active" : ""}`,
+        onClick: () => setActiveTab("craft")
+      },
+      "\u8ABF\u5408"
+    ), /* @__PURE__ */ import_react10.default.createElement(
+      "button",
+      {
+        className: `tab ${activeTab === "shop" ? "active" : ""}`,
+        onClick: () => setActiveTab("shop")
+      },
+      "\u30B7\u30E7\u30C3\u30D7"
+    ), (state.autoCraftSlots || []).length > 0 && /* @__PURE__ */ import_react10.default.createElement(
+      "button",
+      {
+        className: `tab ${activeTab === "auto" ? "active" : ""}`,
+        onClick: () => setActiveTab("auto")
+      },
+      "\u81EA\u52D5\u8ABF\u5408"
+    )), activeTab === "craft" && /* @__PURE__ */ import_react10.default.createElement(CraftingPanel_default, null), activeTab === "shop" && /* @__PURE__ */ import_react10.default.createElement(Shop_default, null), activeTab === "auto" && /* @__PURE__ */ import_react10.default.createElement(AutoCraftPanel_default, null))), showClear && /* @__PURE__ */ import_react10.default.createElement(
+      GameClearModal_default,
+      {
+        onClose: () => {
+          setShowClear(false);
+          setClearDismissed(true);
+        }
+      }
+    ));
+  };
+  var GameScreen_default = GameScreen;
+
+  // app/javascript/App.jsx
+  var AppContent = () => {
+    const { state, dispatch, manualSave, handleReset } = useGameState();
+    return /* @__PURE__ */ import_react11.default.createElement(GameProvider, { value: { state, dispatch, manualSave, handleReset } }, /* @__PURE__ */ import_react11.default.createElement(GameScreen_default, null));
+  };
   var App = () => {
-    return /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("h1", null, "CraftGameApp"), /* @__PURE__ */ import_react.default.createElement("p", null, "React is working!"));
+    return /* @__PURE__ */ import_react11.default.createElement(AppContent, null);
   };
   var App_default = App;
 
   // app/javascript/application.js
-  document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("root");
-    if (container) {
-      const root = (0, import_client.createRoot)(container);
-      root.render(/* @__PURE__ */ import_react2.default.createElement(App_default, null));
-    }
-  });
+  var container = document.getElementById("root");
+  if (container) {
+    const root = (0, import_client.createRoot)(container);
+    root.render(/* @__PURE__ */ import_react12.default.createElement(App_default, null));
+  } else {
+    document.addEventListener("DOMContentLoaded", () => {
+      const c = document.getElementById("root");
+      if (c) {
+        const root = (0, import_client.createRoot)(c);
+        root.render(/* @__PURE__ */ import_react12.default.createElement(App_default, null));
+      }
+    });
+  }
 })();
 /*! Bundled license information:
 

@@ -1,0 +1,516 @@
+/* === Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+/* === Game Container === */
+.game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #16213e;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #0f3460;
+}
+
+.game-header h1 {
+  font-size: 1.5rem;
+  color: #e94560;
+  letter-spacing: 2px;
+}
+
+/* === Layout === */
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Panel === */
+.panel {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #0f3460;
+}
+
+.panel h2 {
+  font-size: 1.1rem;
+  color: #e94560;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #0f3460;
+}
+
+.panel h3 {
+  font-size: 0.95rem;
+  color: #a8a8b8;
+  margin: 12px 0 8px;
+}
+
+/* === Gold Display === */
+.gold-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #2d1f00, #3d2a00);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #6b4c00;
+}
+
+.gold-icon {
+  font-size: 1.3rem;
+}
+
+.gold-amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* === Herb Fields === */
+.fields-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field-card {
+  background: #1a2744;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #0f3460;
+}
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.field-label {
+  font-weight: bold;
+  color: #53d769;
+}
+
+.field-header select {
+  background: #0f3460;
+  color: #e0e0e0;
+  border: 1px solid #1a4a8a;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.field-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.harvest-rate {
+  color: #53d769;
+}
+
+/* === Progress Bar === */
+.progress-bar-container {
+  position: relative;
+  height: 8px;
+  background: #0a1628;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #53d769, #2ecc71);
+  border-radius: 4px;
+  transition: width 0.1s linear;
+}
+
+.progress-bar-craft {
+  background: linear-gradient(90deg, #e94560, #ff6b81);
+}
+
+.progress-label {
+  position: absolute;
+  top: -18px;
+  right: 0;
+  font-size: 0.7rem;
+  color: #888;
+}
+
+/* === Inventory === */
+.inventory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inventory-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #1a2744;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.item-count {
+  margin-left: auto;
+  font-weight: bold;
+  color: #ffd700;
+  min-width: 30px;
+  text-align: right;
+}
+
+.empty-message {
+  color: #666;
+  font-size: 0.85rem;
+  font-style: italic;
+  padding: 8px 0;
+}
+
+/* === Recipe / Crafting === */
+.recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recipe-card {
+  background: #1a2744;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #0f3460;
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.recipe-name {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.recipe-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ingredient {
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #0f3460;
+}
+
+.ingredient.sufficient {
+  color: #53d769;
+}
+
+.ingredient.insufficient {
+  color: #e94560;
+}
+
+.recipe-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sell-price {
+  font-size: 0.85rem;
+  color: #ffd700;
+}
+
+/* === Shop === */
+.shop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shop-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #1a2744;
+  border-radius: 8px;
+  border: 1px solid #0f3460;
+}
+
+.upgrade-level {
+  margin-left: 8px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.upgrade-desc {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* === Auto-Craft === */
+.auto-craft-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auto-craft-slot {
+  background: #1a2744;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #0f3460;
+}
+
+.auto-craft-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.auto-craft-header select {
+  background: #0f3460;
+  color: #e0e0e0;
+  border: 1px solid #1a4a8a;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* === Tab Bar === */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 16px;
+  background: #0f3460;
+  border: 1px solid #1a4a8a;
+  border-radius: 8px 8px 0 0;
+  color: #a8a8b8;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  background: #1a4a8a;
+}
+
+.tab.active {
+  background: #16213e;
+  color: #e94560;
+  border-bottom-color: #16213e;
+  font-weight: bold;
+}
+
+/* === Buttons === */
+.btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-craft {
+  background: #e94560;
+  color: white;
+}
+
+.btn-craft:hover:not(:disabled) {
+  background: #ff6b81;
+}
+
+.btn-sell {
+  background: #0f3460;
+  color: #ffd700;
+  border: 1px solid #1a4a8a;
+}
+
+.btn-sell:hover:not(:disabled) {
+  background: #1a4a8a;
+}
+
+.btn-sell-all {
+  background: #6b4c00;
+  color: #ffd700;
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px;
+}
+
+.btn-sell-all:hover:not(:disabled) {
+  background: #8b6600;
+}
+
+.btn-buy {
+  background: #2d6a4f;
+  color: #b7e4c7;
+}
+
+.btn-buy:hover:not(:disabled) {
+  background: #40916c;
+}
+
+.btn-primary {
+  background: #e94560;
+  color: white;
+  padding: 10px 24px;
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  background: #ff6b81;
+}
+
+/* === Save Bar === */
+.save-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-save {
+  background: #0f3460;
+  color: #53d769;
+  border: 1px solid #1a4a8a;
+}
+
+.btn-save:hover:not(:disabled) {
+  background: #1a4a8a;
+}
+
+.btn-reset {
+  background: #3d0000;
+  color: #e94560;
+  border: 1px solid #660000;
+}
+
+.btn-reset:hover {
+  background: #660000;
+}
+
+.save-message {
+  font-size: 0.8rem;
+  color: #53d769;
+}
+
+/* === Badge === */
+.badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.badge-special {
+  background: #6b4c00;
+  color: #ffd700;
+}
+
+/* === Modal === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #16213e;
+  border: 2px solid #ffd700;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  max-width: 480px;
+  animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.clear-title {
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.clear-message {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-bottom: 12px;
+}
+
+.clear-sub {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 24px;
+}
