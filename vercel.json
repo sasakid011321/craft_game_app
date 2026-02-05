@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build && cp app/assets/stylesheets/game.css dist/game.css",
+  "buildCommand": "chmod +x node_modules/.bin/esbuild && npm run build && cp app/assets/stylesheets/game.css dist/game.css",
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
