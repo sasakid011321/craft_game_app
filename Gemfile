@@ -21,6 +21,9 @@ gem "jsbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Gemfile
+gem "bundler", "2.5.6"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

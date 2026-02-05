@@ -153,7 +153,7 @@ GEM
       activerecord (= 7.0.4.3)
       activestorage (= 7.0.4.3)
       activesupport (= 7.0.4.3)
-      gem "bundler", "2.5.6"
+      bundler (>= 1.15.0)
       railties (= 7.0.4.3)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
