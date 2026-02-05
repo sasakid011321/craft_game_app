@@ -1,3 +1,7 @@
 {
-  "buildCommand": "gem install bundler -v 2.5.6 && bundle install && chmod +x node_modules/.bin/esbuild && bundle exec rails assets:precompile"
+  "buildCommand": "npm run build && cp app/assets/stylesheets/game.css dist/game.css",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

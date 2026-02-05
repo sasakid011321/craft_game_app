@@ -102,7 +102,7 @@ export function useGameState() {
     return () => clearInterval(intervalId);
   }, []);
 
-  // 初回ロード
+  // 初回ロード（localStorageから復元）
   useEffect(() => {
     if (loaded.current) return;
     loaded.current = true;
@@ -110,34 +110,18 @@ export function useGameState() {
     loadGame(uuid.current)
       .then((data) => {
         if (data.game_state && Object.keys(data.game_state).length > 0) {
-          // サーバーのキーをcamelCaseに変換
-          const serverState = data.game_state;
-          // サーバーからのデータがあればそれを使う（キーはそのまま）
-          dispatch({ type: "LOAD_STATE", state: serverState });
+          dispatch({ type: "LOAD_STATE", state: data.game_state });
         }
       })
       .catch((err) => {
-        console.warn("Failed to load from server, using local state:", err);
-        // localStorageからの復元を試みる
-        const saved = localStorage.getItem("craft_game_state");
-        if (saved) {
-          try {
-            dispatch({ type: "LOAD_STATE", state: JSON.parse(saved) });
-          } catch (e) {
-            console.warn("Failed to parse local save:", e);
-          }
-        }
+        console.warn("Failed to load game:", err);
       });
   }, []);
 
   // 自動セーブ（30秒ごと）
   useEffect(() => {
     const saveInterval = setInterval(() => {
-      const currentState = stateRef.current;
-      localStorage.setItem("craft_game_state", JSON.stringify(currentState));
-      saveGame(uuid.current, currentState).catch((err) =>
-        console.warn("Auto-save failed:", err)
-      );
+      saveGame(uuid.current, stateRef.current);
     }, 30000);
 
     return () => clearInterval(saveInterval);
@@ -146,7 +130,7 @@ export function useGameState() {
   // ページ離脱時にセーブ
   useEffect(() => {
     const handleUnload = () => {
-      localStorage.setItem("craft_game_state", JSON.stringify(stateRef.current));
+      saveGame(uuid.current, stateRef.current);
     };
     window.addEventListener("beforeunload", handleUnload);
     return () => window.removeEventListener("beforeunload", handleUnload);
@@ -154,18 +138,13 @@ export function useGameState() {
 
   // 手動セーブ
   const manualSave = useCallback(() => {
-    const currentState = stateRef.current;
-    localStorage.setItem("craft_game_state", JSON.stringify(currentState));
-    return saveGame(uuid.current, currentState);
+    return saveGame(uuid.current, stateRef.current);
   }, []);
 
   // リセット
   const handleReset = useCallback(() => {
     dispatch({ type: "RESET" });
-    resetGame(uuid.current).catch((err) =>
-      console.warn("Reset failed on server:", err)
-    );
-    localStorage.removeItem("craft_game_state");
+    resetGame(uuid.current);
   }, []);
 
   return { state, dispatch, manualSave, handleReset };
