@@ -39,6 +39,11 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Ruby 3.3で標準ライブラリからbundled gemに変更されたgem
+gem "logger"
+gem "bigdecimal"
+gem "mutex_m"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
